@@ -12,8 +12,10 @@
   <div id="app">
 
     <ul>
-      <li v-for="">
-        {{ listExtractos() }}
+      <li 
+        v-if="mail_list.length === 4"
+        v-for="mail in mail_list">
+        {{ mail }}
       </li>
     </ul>
 

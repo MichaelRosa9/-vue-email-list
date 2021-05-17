@@ -12,18 +12,21 @@ var app = new Vue({
     mail_list: [],
     mail: '',
   },
-  mounted(){    
-    axios.get(this.boolean_mail_API)
-    .then(response => {
-      this.mail = response;
-      console.log(response);
-    });
-    
+  mounted(){
+    for(let i = 0; i < 4; i++){
+      axios.get(this.boolean_mail_API)
+      .then(resp => {
+        this.mail = resp.data.response;
+        this.mail_list.push(this.mail);
+      }).catch(err => {
+        console.log(err);
+      });
+      
+      console.log(this.mail);
+    }   
+    console.log(this.mail_list);
   },  
   methods: {
-    listExtractos(){
-      console.log(this.mail.data.response);
-      return this.mail.data.response;
-    }
+  
   },
 });
